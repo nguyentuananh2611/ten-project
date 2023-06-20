@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+.menubox__wrapper{
+    position: relative;
+    width: 355px;
+    height: 253px;
+    border: 1px solid #ccc;
+    box-shadow: 0 5px 40px rgba(0,0,0,.16);
+    margin:30px auto;
+    border-radius: 10px;
+}
+
+.menubox__wrapper .btn__close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+}
+
+.menubox__wrapper .menubox__content{
+    padding: 20px;
+}
+
+.menubox__wrapper .menubox__content ul{
+    display: flex;
+    text-align: center;
+}
+.menubox__wrapper .menubox__content ul li{
+    width: 50%;
+    border-bottom: 1px solid #aaa;
+}
+.menubox__wrapper .menubox__content ul li a{
+   padding: 5px 10px;
+   color: #aaa;
+   font-size: 12px;
+}
+.user_email_password {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #aaa;
+}
+
+.user_email_password label{
+    font-size: 10px;
+    color: #aaa;
+}
+
+.user_email_password input{
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 3px 0;
+    background-color: #fff;
+    height: 30px;
+}
+
+.login__form p button{
+    border: none;
+    display: block;
+    width: 100%;
+    padding: 3px 10px;
+    font-size: 16px;
+    background-color: #71b171;
+    color: #fff;
+}
+
+.isactive{
+    color: #6fa96f;
+    border-bottom: 1px solid #6fa96f ;
+}
