@@ -9,11 +9,14 @@
 .menubox__wrapper{
     position: relative;
     width: 355px;
-    height: 253px;
     border: 1px solid #ccc;
     box-shadow: 0 5px 40px rgba(0,0,0,.16);
     margin:30px auto;
     border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    right: 10%;
+    top: 50%;
 }
 
 .menubox__wrapper .btn__close{
@@ -57,7 +60,7 @@
     border: none;
     padding: 3px 0;
     background-color: #fff;
-    height: 30px;
+    height: 25px;
 }
 
 .login__form p button{

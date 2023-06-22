@@ -126,7 +126,7 @@ body {
 }
 
 .home__search{
-  max-width: 800pxpx;
+  max-width: 800px;
   padding: 12px 20px;
   background-color: #fff;
   color: #444;
@@ -194,4 +194,13 @@ body {
 
 .menu_childGroup a:hover{
   background-color: #ccc;
+}
+
+#buttonLogin {
+  position: relative;
+  display: inline-block;
+}
+
+.inactive{
+  display: none;
 }

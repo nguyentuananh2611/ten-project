@@ -193,35 +193,141 @@ const menu = [
     ],
   },
 ];
+const image = [
+  "url(https://wallpapertag.com/wallpaper/full/4/f/f/465164-download-free-beautiful-anime-wallpaper-1920x1080.jpg)",
+  "url(https://1.bp.blogspot.com/-97e5_Jq2gnM/XqLnW_7mufI/AAAAAAAAAkc/IEes46ScOK4xbfNu9b1SaFbrLfWOaYjdwCLcBGAsYHQ/s1600/hinh-nen-may-tinh-3d-dep-nhat-cho-may-tinh-laptop%2B%25288%2529.jpg)",
+  "url(https://anhdepfree.com/wp-content/uploads/2020/02/anh-anime-dep.jpg)",
+  "url(https://animestore.vn/wp-content/uploads/2022/10/anh-nen-anime-3d-dep_110715766.jpg)",
+];
+
 let mainMenu = document.getElementById("main__menu");
+let divAction = document.getElementById("stickyNavAction");
+let header = document.querySelector(".header");
+
+
 fn_loadData();
 function fn_loadData() {
   let ul = document.createElement("ul");
-  ul.setAttribute("class", "menu__total")
-  menu.forEach(data=>{
+  ul.setAttribute("class", "menu__total");
+  menu.forEach((data) => {
     let litag = "";
     let litag1 = "";
     let dataColumns = data.columns;
-    dataColumns.forEach(data=>{
+    dataColumns.forEach((data) => {
       let litag2 = "";
       let menu_child = data.menu_child;
-      menu_child.forEach(data=>{
-        litag2 += `<li><a href="${data.link}">${data.name}</a></li>`
-      })
-      litag1 += `<li class="menu__columns"><nav><h2>${data.text.toUpperCase()}</h2><ul class="mainMenu__childItem">${litag2}</ul></nav></li>`
-    })
+      menu_child.forEach((data) => {
+        litag2 += `<li><a href="${data.link}">${data.name}</a></li>`;
+      });
+      litag1 += `<li class="menu__columns"><nav><h2>${data.text.toUpperCase()}</h2><ul class="mainMenu__childItem">${litag2}</ul></nav></li>`;
+    });
     litag += `<li class="dropdown"><a href="#" class="menu__item" onclick="fn_menuChild(this)">${data.name}</a>
-                <ul class="menu_childGroup">${litag1}</ul></li>`
-    ul.innerHTML += litag
-  })
-  mainMenu.appendChild(ul); 
+                <ul class="menu_childGroup">${litag1}</ul></li>`;
+    ul.innerHTML += litag;
+  });
+  mainMenu.appendChild(ul);
+  fn_login();
 }
+
 function fn_menuChild(e) {
   let li = e.parentElement;
   let ul = li.querySelector(".menu_childGroup");
   ul.classList.toggle("active");
-  li.addEventListener("mouseout", ()=>{
-    ul.classList.remove("active");
-  })
+  document.addEventListener("click", (event) => {
+    if (!li.contains(event.target)) {
+      ul.classList.remove("active");
+    }
+  });
 }
 
+function fn_login() {
+  let buttonLogin = document.getElementById("buttonLogin");
+  buttonLogin.addEventListener("click", () => {
+    let divtag = "";
+    divtag = `<div class="menubox__wrapper">
+    <a href="#" class="btn__close" id="close"><i class="fa-solid fa-xmark"></i></a>
+    <div class="menubox__content" id="menuContent">
+        <nav>
+            <ul>
+                <li><a href="#" id="formLogin">LOGIN</a></li>
+                <li><a href="#" id="formRegister">REGISTER</a></li>
+            </ul>
+        </nav>
+        <br>
+    </div>
+   </div>`;
+
+    divAction.innerHTML += divtag;
+
+    let formLogin = document.getElementById("formLogin");
+    let formRegister = document.getElementById("formRegister");
+    let arrayLabel1 = ["USERNAME OR EMAIL", "PASSWORD"];
+    let arrayLabel2 = ["COUNTRY", "EMAIL", "USERNAME", "PASSWORD"];
+    let menuContent = document.getElementById("menuContent");
+
+    fn_createForm(menuContent, arrayLabel1, "SIGN IN", "signin");
+    fn_createForm(menuContent, arrayLabel2, "NEXT", "next");
+    let signin = document.getElementById("signin");
+    let next = document.getElementById("next");
+    next.classList.add("inactive");
+    formLogin.style.color = "rgb(97,168,97)";
+    formLogin.parentElement.style.borderBottom = "1px solid rgb(97,168,97)";
+
+    formLogin.addEventListener("click", () => {
+      formLogin.style.color = "rgb(97,168,97)";
+      formLogin.parentElement.style.borderBottom = "1px solid rgb(97,168,97)";
+      next.style.display = "none";
+      signin.style.display = "block";
+      formRegister.style.color = "#aaa";
+      formRegister.parentElement.style.borderBottom = "1px solid #aaa";
+    });
+
+    formRegister.addEventListener("click", () => {
+      signin.style.display = "none";
+      next.style.display = "block";
+      formRegister.style.color = "rgb(97,168,97)";
+      formRegister.parentElement.style.borderBottom =
+        "1px solid rgb(97,168,97)";
+      formLogin.style.color = "#aaa";
+      formLogin.parentElement.style.borderBottom = "1px solid #aaa";
+    });
+
+    let close = document.getElementById("close");
+    close.addEventListener("click", () => {
+      divtag = "";
+      divAction.innerHTML = `<a href="#" class="stickyNav__actions__action"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a href="#" class="stickyNav__actions__action"><i class="fa-solid fa-message"></i></a>
+    <button style="display: inline-block;color: #61a861; padding: 6px 18px;margin: 0 15px;border: none;font-size: 12px;border-radius: 3px;" id="buttonLogin">login</button>`;
+      fn_login();
+    });
+  });
+}
+
+function fn_createForm(div, arr, text, id) {
+  let form = document.createElement("form");
+  form.setAttribute("class", "login__form");
+  form.id = id;
+  for (let i = 0; i < arr.length; i++) {
+    form.innerHTML += `<div class="user_email_password">
+    <label for="#">${arr[i]}</label>
+    <input type="text" required>
+    </div>`;
+  }
+  console.log(form);
+  let inputs = form.querySelectorAll("input");
+  console.log(inputs);
+  for (const input of inputs) {
+    console.log(input);
+  }
+
+
+  let ptag = `<br><br><p><button>${text}</button></p>`;
+  form.innerHTML += ptag;
+  div.appendChild(form);
+}
+
+const backgroundHeader = ()=>{
+  let x = Math.floor(Math.random()*10);
+  header.style.background = image[x];
+}
+backgroundHeader();
